@@ -8,24 +8,503 @@
     4. Areas
         4.1 Header
         4.2 Introduction
-        etc.
+        4.3 Articles
+        4.4 Infocards
+        4.5 Form
+        4.6 Footer
     5. Media Queries
-////////////////////////*/
+ ///////////////////////////*/
 
 /* ------------------------------- 1. Global Styles -------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --standardtext: #0C0C0C;
+    --servicetile: #7A7A7A;
+    --purple: #5722CD;
+    --blue: #4845E4;
+    --pink: #ED4385;
+    --hovering: #F2F0FF;
+    --projectbg: #F3F6F9;
+}
+
+body {
+    font-family: Roboto, Arial, Helvitica, sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
 
 /* ------------------------------- 2. Typography ----------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Merriweather', "Times New Roman", Georgia, Baskerville, serif;
+}
+
+h1,
+h2 {
+    font-size: 46px;
+    padding: 16px 0;
+}
+
+
+h3 {
+    font-size: 36px;
+    color: var(--purple);
+    padding: 12px 0;
+}
+
+h4 {
+    font-size: 32px;
+    padding: 12px 0;
+    margin: 24px 0;
+}
+
+h5 {
+    font-size: 24px;
+    padding: 12px 0;
+    color: var(--purple);
+}
+
+p {
+    margin: 12px 0;
+}
 
 /* ------------------------------- 3. Layout --------------------------------------- */
 
 /* --------------- 3.1 Reusables ----------------------- */
 
+.outer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 1 1400px;
+    margin: 40px 20px;
+    padding: 50px 0px;
+
+}
+
 /* --------------- 3.2 Other --------------------------- */
+a,
+a:visited,
+a:link {
+    text-decoration: none;
+    color: var(--purple);
+}
+
+button {
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background-color: var(--pink);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 8px 4px rgba(0, 0, 0, 0.2);
+    padding: 25px 40px;
+    margin: 28px 0;
+    cursor: pointer;
+}
 
 /* ------------------------------- 4. Areas ---------------------------------------- */
 
 /* --------------- 4.1 Header ------------------------- */
 
+#header {
+    background: var(--blue);
+    background-image: linear-gradient(90deg, rgba(72, 69, 228, 1) 0%, rgba(72, 69, 228, 1) 35%, rgba(87, 34, 205, 1) 100%);
+    color: white;
+    padding: 30px 0;
+    position: relative;
+
+}
+
+#header::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    background-image: url(assets/noise-texture.png);
+    background-position: top center;
+    background-size: auto;
+}
+
+.header__navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.header__navigation a {
+    color: #FFF;
+}
+
+.header__navigation ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 0 1 400px;
+    z-index: 999;
+    padding-right: 20px;
+}
+
+.header__hero {
+    padding: 100px 0;
+    margin-bottom: 88px;
+    font-size: 27px;
+    z-index: 999;
+}
+
+#header__hero-text {
+    max-width: 850px;
+    text-align: center;
+}
+
+.header__image {
+    display: block;
+    width: 80px;
+    height: 100px;
+    margin-top: 60px;
+    position: absolute;
+    bottom: -13px;
+    z-index: 1;
+    left: calc(50% - 39px);
+}
+
+.header__triangle {
+    width: 100%;
+    height: 80px;
+    background: rgb(72, 69, 228);
+    background-image: linear-gradient(90deg, rgba(72, 69, 228, 1) 0%, rgba(72, 69, 228, 1) 35%, rgba(87, 34, 205, 1) 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+}
+
+.header__triangle::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    background-image: url(assets/noise-texture.png);
+    background-position: top center;
+    background-size: auto;
+}
+
 /* --------------- 4.2 Introduction ------------------- */
 
+#intro {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#intro::before {
+    content: 'hello';
+    color: var(--projectbg);
+    position: absolute;
+    z-index: -1;
+    opacity: 0.8;
+    font-size: 400px;
+    font-weight: bold;
+    letter-spacing: -3px;
+}
+
+#intro a {
+    color: var(--purple);
+}
+
+.intro__triangle {
+    width: 100%;
+    height: 80px;
+    background: var(--projectbg);
+    clip-path: polygon(100% 100%, 0% 100%, 0% 0%);
+}
+
+/* --------------- 4.3 Articles ------------------- */
+
+
+#work {
+    padding-top: 140px;
+    z-index: -1;
+    background-color: var(--projectbg);
+}
+
+#work::before {
+    content: 'work';
+    color: #FFF;
+    position: absolute;
+    z-index: 0;
+    opacity: 0.8;
+    font-size: 400px;
+    font-weight: bold;
+    margin-top: -180px;
+    letter-spacing: -3px;
+}
+
+.work__article {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 100px 0;
+    z-index: 2;
+}
+
+.work__article:nth-of-type(odd) {
+    flex-direction: row-reverse;
+}
+
+.work__article-image-wrap img {
+    width: 100%;
+    box-shadow: 0 32px 28px -10px rgba(0, 0, 0, 0.20);
+}
+
+.work__article-info {
+    flex: 0 0 480px;
+    padding: 0 50px 50px 50px;
+}
+
+.work__article-info p {
+    font-weight: 400;
+    margin: 50px 0;
+}
+
+.work__article-link {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.work__article-link:after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--purple);
+    position: absolute;
+    left: 150px;
+    top: 50%;
+    transition: .3s;
+}
+
+.work__article-link:hover::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--purple);
+    position: absolute;
+    left: 150px;
+    top: 50%;
+}
+
+.work__article-wave {
+    margin-top: 24px;
+    width: 55px;
+    height: 6px;
+}
+
+/* --------------- 4.4 Infocards ------------------- */
+
+.services__triangle {
+    width: 100%;
+    height: 80px;
+    background: var(--projectbg);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+    margin-bottom: 100px;
+}
+
+#services::before {
+    content: 'services';
+    color: var(--purple);
+    position: absolute;
+    z-index: -1;
+    opacity: 0.05;
+    font-size: 300px;
+    font-weight: bold;
+    margin-top: -170px;
+    letter-spacing: -3px;
+}
+
+#services > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 24px;
+}
+
+.services__card {
+    border: 1px solid var(--purple);
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    flex: 0 1 380px;
+    height: 380px;
+    background: #fff;
+}
+
+.services__card p {
+    font-size: 16px;
+}
+
+
+.services__card-icon {
+    width: 80px;
+}
+
+/* --------------- 4.5 Form ------------------- */
+
+.contact__triangle {
+    width: 100%;
+    height: 80px;
+    background: var(--blue);
+    background-image: linear-gradient(90deg, rgba(72, 69, 228, 1) 0%, rgba(72, 69, 228, 1) 35%, rgba(87, 34, 205, 1) 100%);
+    clip-path: polygon(100% 100%, 0% 100%, 0% 0%);
+    margin-bottom: -2px;
+    margin-top: 40px;
+}
+
+#contact {
+    background: var(--blue);
+    background-image: linear-gradient(90deg, rgba(72, 69, 228, 1) 0%, rgba(72, 69, 228, 1) 35%, rgba(87, 34, 205, 1) 100%);
+    color: white;
+    position: relative;
+    text-align: center;
+}
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 100%;
+}
+
+.contact__form label {
+    padding: 20px 0;
+}
+
+.contact__form input, textarea {
+    border-radius: 4px;
+    font-family: Roboto, Verdana, Arial, sans-serif;
+    display: block;
+    padding: 16px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.contact__form button {
+    align-self: center;
+    width: 200px;
+}
+
+/* --------------- 4.6 Footer ------------------- */
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
 /* ------------------------------- 5. Media Queries -------------------------------- */
+
+@media screen and (max-width: 576px) {
+    h1, h2 {
+        font-size: 36px;
+        padding: 16px 0;
+    }
+
+    h3 {
+        font-size: 26px;
+    }
+
+
+    h6 {
+        font-size: 22px;
+        line-height: 1.5;
+        padding: 12px 0;
+    }
+
+    .header__navigation {
+        justify-content: center;
+    }
+
+    .header__navigation a {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .header__triangle,
+    .intro__triangle,
+    .services__triangle,
+    .contact__triangle {
+        height: 20px;
+    }
+
+    #intro a {
+        margin: 50px 0 0 0;
+    }
+
+    #intro::before {
+        font-size: 200px;
+        align-self: center;
+    }
+
+    #work::before {
+        font-size: 200px;
+        margin-top: -70px;
+    }
+
+    .work__article:nth-of-type(odd),
+    .work__article {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .work__article-image-wrap {
+        flex-basis: auto;
+    }
+
+    .work__article-info {
+        padding: 0 0 50px 0;
+        flex-basis: auto;
+    }
+
+    #services::before {
+        font-size: 120px;
+        margin-top: 20px;
+    }
+
+    #services > div {
+        padding: 100px 0 50px 0;
+    }
+
+}
